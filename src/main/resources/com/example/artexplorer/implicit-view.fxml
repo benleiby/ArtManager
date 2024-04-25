@@ -1,16 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.artexplorer.ImplicitExplorerController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<!--suppress ALL -->
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<StackPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.artexplorer.ImplicitExplorerController">
+   <children>
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" vbarPolicy="NEVER">
+         <content>
+            <HBox fx:id="gallery" prefHeight="766.0">
+               <children>
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <StackPane prefHeight="679.0" prefWidth="1019.0" style="-fx-background-color: #FFFFFF;">
+                           <children>
+                              <ImageView fitHeight="400.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER" />
+                           </children></StackPane>
+                        <ImageView fitHeight="203.0" fitWidth="1019.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@stanchion.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <StackPane prefHeight="679.0" prefWidth="1019.0" style="-fx-background-color: #FFFFFF;">
+                           <children>
+                              <ImageView fitHeight="400.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER" />
+                           </children>
+                        </StackPane>
+                        <ImageView fitHeight="203.0" fitWidth="1019.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@stanchion.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <StackPane prefHeight="679.0" prefWidth="1019.0" style="-fx-background-color: #FFFFFF;">
+                           <children>
+                              <ImageView fitHeight="400.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER" />
+                           </children>
+                        </StackPane>
+                        <ImageView fitHeight="203.0" fitWidth="1019.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@stanchion.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <StackPane prefHeight="679.0" prefWidth="1019.0" style="-fx-background-color: #FFFFFF;">
+                           <children>
+                              <ImageView fitHeight="400.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER" />
+                           </children>
+                        </StackPane>
+                        <ImageView fitHeight="203.0" fitWidth="1019.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@stanchion.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <StackPane prefHeight="679.0" prefWidth="1019.0" style="-fx-background-color: #FFFFFF;">
+                           <children>
+                              <ImageView fitHeight="400.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER" />
+                           </children>
+                        </StackPane>
+                        <ImageView fitHeight="203.0" fitWidth="1019.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@stanchion.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <StackPane prefHeight="679.0" prefWidth="1019.0" style="-fx-background-color: #FFFFFF;">
+                           <children>
+                              <ImageView fitHeight="400.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER" />
+                           </children>
+                        </StackPane>
+                        <ImageView fitHeight="203.0" fitWidth="1019.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@stanchion.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+               </children></HBox>
+         </content>
+      </ScrollPane>
+   </children>
+</StackPane>
