@@ -66,6 +66,7 @@ public class ArtDataUtil {
             ObjectMapper objectMapper = new ObjectMapper();
 
             // Parse JSON string into JsonNode
+            @SuppressWarnings("VulnerableCodeUsages")
             JsonNode jsonNode = objectMapper.readTree(jsonString);
 
             // Access specific fields
@@ -91,8 +92,19 @@ public class ArtDataUtil {
 
         ArtDataUtil data = new ArtDataUtil();
 
-        BufferedImage image = data.getImage("27992");
+        try{
 
+            data.setAccessPoint("https://api.artic.edu/api/v1/agents/search?query[term][is_artist]=true");
+            data.openConnection();
+
+            BufferedReader reader = new BufferedReader(data.getInputStreamReader());
+
+            String line = reader.readLine();
+            System.out.println(line);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 
