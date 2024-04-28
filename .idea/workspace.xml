@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="611a0e0d-f686-48b0-9a1e-c341073f1494" name="Changes" comment="Created project">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/ArtDataProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/UserProfile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/ArtRecommender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/Artwork.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/artexplorer/POJOArtworks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/artexplorer/dataModel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/artexplorer/feature spaces" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/ArtDataProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/ArtDataProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/ArtDataUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/ArtDataUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/ImplicitExplorerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/ImplicitExplorerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/artexplorer/implicit-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/artexplorer/implicit-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/UserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/UserProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +36,12 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -43,28 +52,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ArtData.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ArtDataFetcher.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ArtDataUtil.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ExplorerLauncher.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sirbe/Downloads/jackson-core-2.17.0.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ArtData.executor": "Run",
+    "Application.ArtDataFetcher.executor": "Run",
+    "Application.ArtDataProcessor.executor": "Run",
+    "Application.ArtDataUtil.executor": "Run",
+    "Application.ExplorerLauncher.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/sirbe/.m2/repository/org/apache/mahout/mahout-mr/0.13.0/mahout-mr-0.13.0.jar",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.508046",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\sirbe\IdeaProjects\ArtManager\src\main\resources\com\example\artexplorer" />
@@ -94,13 +105,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -111,5 +115,16 @@
       <updated>1713988172289</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

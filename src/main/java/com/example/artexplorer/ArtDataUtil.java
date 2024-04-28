@@ -14,9 +14,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ArtDataUtil {
 
+    // API Access
     private URI accessPoint;
     HttpURLConnection connection;
     InputStreamReader reader;
+
+    // Local Data Access
 
     public ArtDataUtil() {
     }
@@ -94,7 +97,7 @@ public class ArtDataUtil {
 
         try{
 
-            data.setAccessPoint("https://api.artic.edu/api/v1/agents/search?query[term][is_artist]=true");
+            data.setAccessPoint("https://api.artic.edu/api/v1/artworks/28560");
             data.openConnection();
 
             BufferedReader reader = new BufferedReader(data.getInputStreamReader());

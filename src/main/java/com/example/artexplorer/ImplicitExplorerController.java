@@ -17,6 +17,7 @@ import javafx.util.Duration;
 
 import javafx.embed.swing.SwingFXUtils;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,6 +45,8 @@ public class ImplicitExplorerController {
 
     private UserProfile user;
 
+    private ArtRecommender recommender;
+
     @FXML
     public void initialize() {
 
@@ -53,6 +56,8 @@ public class ImplicitExplorerController {
 
         ArtDataUtil data = new ArtDataUtil();
         artIds = getArtIds();
+
+        recommender = new ArtRecommender();
 
         for (int i = 0; i < artIds.length; i++) {
 
@@ -79,13 +84,42 @@ public class ImplicitExplorerController {
 
     public void onNewGalleryButtonClick() {
 
+        ArtDataUtil data = new ArtDataUtil();
+
+        // end the last timer
         endTimer();
-        System.out.println(viewDurationMap.toString());
+
+        // update user view history
         if (user == null) {
             user = new UserProfile(viewDurationMap);
         } else {
             user.addToViewHistory(viewDurationMap);
         }
+
+        viewDurationMap.clear();
+
+        // swtich scene and determine which artworks to recommend next.
+
+        artIds = recommender.getNMostSimilarArtworks(user, 6);
+
+        currentImage = (ImageView) ((StackPane) currentDisplay.getChildren().getFirst()).getChildren().getFirst();
+
+        for (int i = 0; i < artIds.length; i++) {
+
+            currentDisplaySetter = (VBox) gallery.getChildren().get(i);
+            currentImage = (ImageView) ((StackPane) currentDisplaySetter.getChildren().getFirst()).getChildren().getFirst();
+
+            try {
+                currentImage.setImage(SwingFXUtils.toFXImage(data.getImage(artIds[i]), null));
+            } catch (NullPointerException ignored) {
+
+            }
+
+        }
+
+        currentDisplay = (VBox) gallery.getChildren().getFirst();
+        scrollPane.setHvalue(0);
+        scrollPane.requestFocus();
 
     }
 
@@ -110,7 +144,7 @@ public class ImplicitExplorerController {
 
     private String [] getArtIds() {
 
-        return new String [] {"111628", "28560", "21023", "137125", "27992", "229393"};
+        return new String [] {"129884", "28560", "21023", "137125", "27992", "229393"};
 
     }
 

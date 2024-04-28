@@ -1,38 +1,47 @@
 package com.example.artexplorer;
 
+import java.io.File;
 import java.util.*;
 
 public class UserProfile {
-
-    // what do i have?
-    // viewdurationMap
-    // so i have the durations that the user has viewed the artworks
-    // therefore, i have 6 starting artworks and all their attributes
-    // and i have how long the user looked at each artwork.
-    // sort the artworks from highest view to lowest
-    // how will i construct user preferences from this data?
-    // so i can assign a weight to each artwork
-
-    // then create a system for getting the similarity between two pieces of art
-    // i want to recommend the user art that is most similar to the art that is high in viewHistory
-    // so i look for similar art starting at the most viewed piece of art and when i run out of similar art
-    // i move on to the second most viewed piece of art and so on.
 
     private Map<String, Long> viewHistory;
 
     @SuppressWarnings({"FieldCanBeLocal", "FieldMayBeFinal"})
     private ArtDataUtil data;
 
+    @SuppressWarnings({"FieldCanBeLocal", "FieldMayBeFinal"})
+    private ArtDataProcessor processor;
+
+    private long[] weightedFeatureSpace;
 
     public UserProfile(Map<String, Long> viewDurationMap) {
         viewHistory = viewDurationMap;
         viewHistory = sortMapByValue(viewHistory);
+        processor = new ArtDataProcessor();
         data = new ArtDataUtil();
+
+//        for (HashMap.Entry<String, Long> entry : viewHistory.entrySet()) {
+//            System.out.println("Id: " + entry.getValue());
+//            System.out.println("Duration: " + entry.getKey());
+//        }
+
+    }
+
+    public Map<String, Long> getViewHistory() {
+        return viewHistory;
+
     }
 
     public void addToViewHistory(Map<String, Long> viewDurationMap) {
         viewHistory = addMaps(viewHistory, viewDurationMap);
         viewHistory = sortMapByValue(viewHistory);
+
+//        for (HashMap.Entry<String, Long> entry : viewHistory.entrySet()) {
+//            System.out.println("Id: " + entry.getValue());
+//            System.out.println("Duration: " + entry.getKey());
+//        }
+
     }
 
     private Map<String, Long> addMaps(Map<String, Long> map1, Map<String, Long> map2) {
@@ -75,4 +84,7 @@ public class UserProfile {
         return sortedMap;
     }
 
+    public void setWeightedFeatureSpace(long[] weightedFeatureSpace) {
+        this.weightedFeatureSpace = weightedFeatureSpace;
+    }
 }
