@@ -97,7 +97,7 @@ public class ArtDataUtil {
 
         try{
 
-            data.setAccessPoint("https://api.artic.edu/api/v1/artworks/28560");
+            data.setAccessPoint("https://api.artic.edu/api/v1/artworks/21023");
             data.openConnection();
 
             BufferedReader reader = new BufferedReader(data.getInputStreamReader());

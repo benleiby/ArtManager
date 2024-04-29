@@ -6,6 +6,7 @@ import java.util.*;
 public class UserProfile {
 
     private Map<String, Long> viewHistory;
+    private Map<String, Integer> ratingMap;
 
     @SuppressWarnings({"FieldCanBeLocal", "FieldMayBeFinal"})
     private ArtDataUtil data;
@@ -13,10 +14,10 @@ public class UserProfile {
     @SuppressWarnings({"FieldCanBeLocal", "FieldMayBeFinal"})
     private ArtDataProcessor processor;
 
-    private long[] weightedFeatureSpace;
+    public UserProfile(Map<String, Long> viewDurationMap, Map<String, Integer> ratingMap) {
 
-    public UserProfile(Map<String, Long> viewDurationMap) {
         viewHistory = viewDurationMap;
+        this.ratingMap = ratingMap;
         viewHistory = sortMapByValue(viewHistory);
         processor = new ArtDataProcessor();
         data = new ArtDataUtil();
@@ -31,6 +32,10 @@ public class UserProfile {
     public Map<String, Long> getViewHistory() {
         return viewHistory;
 
+    }
+
+    public void addToRatingMap(Map<String, Integer> ratingMap) {
+        this.ratingMap.putAll(ratingMap);
     }
 
     public void addToViewHistory(Map<String, Long> viewDurationMap) {
@@ -84,7 +89,11 @@ public class UserProfile {
         return sortedMap;
     }
 
-    public void setWeightedFeatureSpace(long[] weightedFeatureSpace) {
-        this.weightedFeatureSpace = weightedFeatureSpace;
+    public Map<String, Integer> getRatingMap() {
+        return ratingMap;
+    }
+
+    public void setRatingMap(Map<String, Integer> ratingMap) {
+        this.ratingMap = ratingMap;
     }
 }

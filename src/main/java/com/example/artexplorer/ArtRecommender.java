@@ -27,7 +27,6 @@ public class ArtRecommender {
         Map<String, long[]> featureSpaces = new HashMap<>();
         Map<String, Double> similairitiesToUser = new HashMap<>();
         long [] weightedAverageSpace = new long[5];
-
         String [] result = new String[n];
 
         for (HashMap.Entry<String, Long> entry : viewHistory.entrySet()) {
@@ -42,11 +41,7 @@ public class ArtRecommender {
 
         for (HashMap.Entry<String, long[]> space : featureSpaces.entrySet()) {
 
-//            System.out.println(space.getKey() + " duration: " + viewHistory.get(space.getKey()));
-//            System.out.println(Arrays.toString(space.getValue()));
-
-            // weight the feauture space
-
+            // weight the feature vector
             double weight = (double) (viewHistory.get(space.getKey()) / 5000);
             System.out.println(weight);
 
@@ -54,45 +49,25 @@ public class ArtRecommender {
                 space.getValue()[i] = (long) (space.getValue()[i] * weight);
             }
 
-            //System.out.println("Weighted : " + Arrays.toString(space.getValue()));
-
             // add to averageWeightedSpace
-
             for (int i = 0; i < space.getValue().length; i++) {
                 weightedAverageSpace[i] += space.getValue()[i];
             }
 
-            //System.out.println("New sum :" + Arrays.toString(weightedAverageSpace));
-
         }
 
         // divide to get weighted average space.
-
         for (int i = 0; i < weightedAverageSpace.length; i++) {
-
             weightedAverageSpace[i] = weightedAverageSpace[i] / viewHistory.entrySet().size();
-
         }
 
-        // use cosing similarity to check similarity to other artworks
-
+        // use cosine similarity to check similarity to other artworks
         for (Artwork work : works) {
-
             if (!viewedArt.contains(work)) {
                 double similairty = processor.cosineSimilarity(weightedAverageSpace, processor.getFeatureSpace(work));
                 similairitiesToUser.put(work.getArtId(), similairty);
             }
-
-
-
         }
-
-//        for (HashMap.Entry<String, Double> entry : similairitiesToUser.entrySet()) {
-//
-//            System.out.println("ArtId :" + entry.getKey());
-//            System.out.println("Similiarty to user :" + entry.getValue());
-//
-//        }
 
         similairitiesToUser = sortMapByValue(similairitiesToUser);
 
@@ -101,13 +76,11 @@ public class ArtRecommender {
             if (i == n) {
                 break;
             }
-
             result[i] = entry.getKey();
             i++;
         }
 
         return result;
-
     }
 
     public Map<String, Double> sortMapByValue(Map<String, Double> map) {

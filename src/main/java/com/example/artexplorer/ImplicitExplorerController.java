@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
@@ -36,8 +37,13 @@ public class ImplicitExplorerController {
 
     private Timeline scrollAnimation;
 
+    @FXML
+    public TextField ratingBox;
+
     @SuppressWarnings({"FieldMayBeFinal"})
     private Map<String, Long> viewDurationMap = new HashMap<>();
+    @SuppressWarnings({"FieldMayBeFinal"})
+    private Map<String, Integer> ratingMap = new HashMap<>();
     private Long startTime;
 
     @SuppressWarnings("FieldCanBeLocal")
@@ -47,8 +53,10 @@ public class ImplicitExplorerController {
 
     private ArtRecommender recommender;
 
+
     @FXML
     public void initialize() {
+
 
         Platform.runLater(() -> scrollPane.requestFocus());
         currentDisplay = (VBox) gallery.getChildren().getFirst();
@@ -73,6 +81,24 @@ public class ImplicitExplorerController {
                 scrollRight();
             } else if (event.getCode() == KeyCode.LEFT) {
                 scrollLeft();
+            } else if (event.getCode() == KeyCode.UP) {
+
+                if (ratingBox.getText().startsWith("?")) {
+                    ratingBox.setText("1 / 5");
+                }
+                else if (!ratingBox.getText().startsWith("5")) {
+                    ratingBox.setText(Character.getNumericValue(ratingBox.getText().charAt(0)) + 1 + " / 5");
+                }
+
+            } else if (event.getCode() == KeyCode.DOWN) {
+
+                if (ratingBox.getText().startsWith("1")) {
+                    ratingBox.setText("? / 5");
+                }
+                else if (!ratingBox.getText().startsWith("?")) {
+                    ratingBox.setText(Character.getNumericValue(ratingBox.getText().charAt(0)) - 1  + " / 5");
+                }
+
             }
 
         });
@@ -91,16 +117,19 @@ public class ImplicitExplorerController {
 
         // update user view history
         if (user == null) {
-            user = new UserProfile(viewDurationMap);
+            user = new UserProfile(viewDurationMap, ratingMap);
         } else {
             user.addToViewHistory(viewDurationMap);
+            user.addToRatingMap(ratingMap);
         }
 
+        ratingMap.clear();
         viewDurationMap.clear();
 
         // swtich scene and determine which artworks to recommend next.
 
         artIds = recommender.getNMostSimilarArtworks(user, 6);
+        System.out.println(Arrays.toString(artIds));
 
         currentImage = (ImageView) ((StackPane) currentDisplay.getChildren().getFirst()).getChildren().getFirst();
 
@@ -116,6 +145,14 @@ public class ImplicitExplorerController {
             }
 
         }
+
+        for (HashMap.Entry<String, Integer> entry : ratingMap.entrySet()) {
+
+            System.out.println("Id: " + entry.getKey());
+            System.out.println("Rating: " + entry.getValue());
+
+        }
+
 
         currentDisplay = (VBox) gallery.getChildren().getFirst();
         scrollPane.setHvalue(0);
@@ -144,7 +181,8 @@ public class ImplicitExplorerController {
 
     private String [] getArtIds() {
 
-        return new String [] {"129884", "28560", "21023", "137125", "27992", "229393"};
+        //return new String [] {"129884", "28560", "21023", "137125", "27992", "229393"};
+        return new String [] {"99539", "6596", "21023", "137125", "27992", "229393"};
 
     }
 
@@ -153,6 +191,10 @@ public class ImplicitExplorerController {
         // Calculate the index of the next artwork
         int currentIndex = gallery.getChildren().indexOf(currentDisplay);
         if (currentIndex < gallery.getChildren().size() - 1) {
+
+            String displayId = currentDisplay.getId();
+            String artId = artIds[Character.getNumericValue(displayId.charAt(displayId.length() - 1))];
+            ratingMap.put(artId, Character.getNumericValue(ratingBox.getText().charAt(0)));
 
             if (startTime != null) endTimer();
 
@@ -169,6 +211,11 @@ public class ImplicitExplorerController {
         // Calculate the index of the previous artwork
         int currentIndex = gallery.getChildren().indexOf(currentDisplay);
         if (currentIndex > 0) {
+
+            String displayId = currentDisplay.getId();
+            String artId = artIds[Character.getNumericValue(displayId.charAt(displayId.length() - 1))];
+            ratingMap.put(artId, Character.getNumericValue(ratingBox.getText().charAt(0)));
+
 
             if (startTime != null) endTimer();
 
@@ -206,6 +253,7 @@ public class ImplicitExplorerController {
         // Set the horizontal scroll position
         scrollPane.setHvalue(scrollX);
         startTimer();
+        ratingBox.setText("? / 5");
 
     }
 

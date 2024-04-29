@@ -180,4 +180,53 @@ public class ArtDataProcessor {
 
     }
 
+    public static void main (String [] args) throws IOException {
+
+        ArtDataProcessor processor = new ArtDataProcessor();
+
+//        long [] headVector = new long[0];
+//        long [] buddahVector = new long[0];
+
+        ArrayList<Artwork> works = processor.getWorks();
+
+        HashMap<String, long[]> vectors =  processor.getFeatureSpaces(works);
+
+        for (HashMap.Entry<String, long[]> vector : vectors.entrySet()) {
+
+            System.out.println(vector.getKey());
+            System.out.println(Arrays.toString(vector.getValue()));
+
+        }
+
+        for (Artwork work : works) {
+
+            for (HashMap.Entry<String, long[]> vector : vectors.entrySet()) {
+
+                double similarity;
+                long[] vector1 = processor.getFeatureSpace(work);
+                long[] vector2 = vector.getValue();
+
+                similarity = processor.cosineSimilarity(vector1, vector2);
+
+                System.out.println("Id1 :" + work.getArtId() + " Id2: " + vector.getKey() + " Similarity: " + similarity);
+
+            }
+
+
+
+
+
+
+
+        }
+
+
+
+//        System.out.println(processor.cosineSimilarity(buddahVector, headVector));
+
+
+
+
+    }
+
 }

@@ -4,19 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="611a0e0d-f686-48b0-9a1e-c341073f1494" name="Changes" comment="Created project">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/ArtRecommender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/Artwork.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/artexplorer/POJOArtworks" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/artexplorer/dataModel" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/artexplorer/feature spaces" afterDir="false" />
+    <list default="true" id="611a0e0d-f686-48b0-9a1e-c341073f1494" name="Changes" comment="Implemented algo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/ArtDataProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/ArtDataProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/ArtDataUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/ArtDataUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/ArtRecommender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/ArtRecommender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/ImplicitExplorerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/ImplicitExplorerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/UserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/artexplorer/UserProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/artexplorer/implicit-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/artexplorer/implicit-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +109,15 @@
       <option name="presentableId" value="Default" />
       <updated>1713988172289</updated>
     </task>
+    <task id="LOCAL-00001" summary="Implemented algo">
+      <option name="closed" value="true" />
+      <created>1714337357778</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1714337357778</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -126,5 +130,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implemented algo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented algo" />
   </component>
 </project>
